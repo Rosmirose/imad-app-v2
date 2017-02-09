@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var article1 = {
+var article = {
+  article1: {
     title: "Article 1| Rosmi Rehman",
     heading: "Article 1",
     date : 'Feb 9, 2017',
@@ -18,7 +19,38 @@ var article1 = {
             <p>
                 Hello, paragraph 3 This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1
             </p>`
-}
+    },
+  article2: {
+    title: "Article 2| Rosmi Rehman",
+    heading: "Article 2",
+    date : 'Feb 9, 2017',
+    content: `
+    <p>
+    Hello, paragraph 1 This is my content for artcile 2.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1
+    </p>
+    <p>
+        Hello, paragraph 2  This is my content for artcile 2.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.
+    </p>
+    <p>
+        Hello, paragraph 3 This is my content for artcile 2.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1
+    </p>`
+  },
+  article3: {
+    title: "Article 3| Rosmi Rehman",
+    heading: "Article 3",
+    date : 'Feb 9, 2017',
+    content: 
+    `<p>
+        Hello, paragraph 1 This is my content for artcile 3.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1
+    </p>
+    <p>
+        Hello, paragraph 2  This is my content for artcile 3.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.
+    </p>
+    <p>
+        Hello, paragraph 3 This is my content for artcile 3.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1
+    </p>`
+  }
+};
 
 function createTemplate(data) {
 var title = data.title;
@@ -55,14 +87,19 @@ var htmlTemplate = `
     `;
  return htmlTemplate;
 }
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article1', function (req, res) {
-  res.send(createTemplate(article1));
-});
+// app.get('/article1', function (req, res) {
+//   res.send(createTemplate(article1));
+// });
 
+app.get('/:articleName', function(req, res) {
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[artcileName]));
+})
 app.get('/article2', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article2.html'));
 });
