@@ -39,7 +39,7 @@ var articles = {
     title: "Article 3| Rosmi Rehman",
     heading: "Article 3",
     date : 'Feb 9, 2017',
-    content: 
+    content:
     `<p>
         Hello, paragraph 1 This is my content for artcile 3.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1.Hello This is my content for artcile 1
     </p>
@@ -103,6 +103,10 @@ app.get('/:articleName', function(req, res) {
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
+});
+
+app.get('/ui/main.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
 app.get('/ui/madi.png', function (req, res) {
