@@ -43,6 +43,6 @@ submit.onclick = function() {
     }
   };
    
-  request.open('GET','http://rosmirose.imad.hasura-app.io/submit-name?name='+name, true);
+  request.open('GET','http://rosmirose.imad.hasura-app.io/submit-name?name=' + name, true);
   request.send(null); 
 };
