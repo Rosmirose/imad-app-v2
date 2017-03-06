@@ -9,7 +9,7 @@ var config = {
     database: 'rosmirose',
     host: 'http://db.imad.hasura-app.io/',
     port: '5432',
-    password: DB_PASSWORD
+    password: process.env.DB_PASSWORD
 }
 
 
