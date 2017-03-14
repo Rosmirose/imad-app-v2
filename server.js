@@ -104,8 +104,7 @@ function hash (input, salt) {
   return hashed.toString('hex');
 }
 app.get('/hash/:input', function(req, res) {
-  var salt = 'this-is-some-random-string';
-  var hashedString = hash(req.params.input, 'rosmi');
+  var hashedString = hash(req.params.input, 'this-is-a-random-string');
   res.send(hashedString);
 });
 
