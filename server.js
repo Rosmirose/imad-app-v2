@@ -11,7 +11,7 @@ var config = {
     host: 'db.imad.hasura-app.io',
     port: '5432',
     password: process.env.DB_PASSWORD
-}
+};
 
 
 app.use(morgan('combined'));
@@ -105,7 +105,7 @@ function hash (input, salt) {
 }
 app.get('/hash/:input', function(req, res) {
   var salt = 'this-is-some-random-string';
-  var hashedString = hash(req.params.input, salt);
+  var hashedString = hash(req.params.input, 'rosmi');
   res.send(hashedString);
 });
 
