@@ -54,7 +54,7 @@ submit.onclick = function() {
   
   var nameInput = document.getElementById('username').value;
   var password =  document.getElementById('password').value;
-  console.log(username);
+  console.log("\n USERNAME", username);
   console.log(password);
   request.open('POST','http://rosmirose.imad.hasura-app.io/login', true);
   request.setRequestHeader('Content-Type', 'application/json');
