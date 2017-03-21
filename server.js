@@ -147,7 +147,7 @@ app.post('/login', function(req, res) {
               //session middle ware set a cookie with session id - {auth: {userId}}
               res.send("user succesfully logged in");
             } else {
-              res.send(403).sen("username/password is incorrect");
+              res.send(403).send("username/password is incorrect");
             }
           }
       } 
@@ -155,12 +155,13 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/check-login', function(req, res) {
-   if(req.session && req.session.auth && req.session.auth.userId) {
-       res.send("You are logged in:", + req.session.auth.userId.toString());
+   if (req.session && req.session.auth && req.session.auth.userId) {
+       res.send(`You are logged in:`, + req.session.auth.userId.toString());
    } else {
-       res.send("Not logged in")
+       res.send("Not logged in");
    }
 });
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
