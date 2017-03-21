@@ -136,7 +136,7 @@ app.post('/login', function(req, res) {
         res.status(500).send(err.toString());
       } else {
           if(result.rows.length === 0) {
-             res.send(403).send("username/password is incorrect");
+             res.status(403).send("username/password is incorrect");
           } else {
             var dbString = result.rows[0].password;
             var salt = dbString.split('$')[2];
@@ -145,9 +145,9 @@ app.post('/login', function(req, res) {
                 
               req.session.auth = {userId: result.rows[0].id};
               //session middle ware set a cookie with session id - {auth: {userId}}
-              res.send("user succesfully logged in");
+              res.status(200).send("user succesfully logged in");
             } else {
-              res.send(403).send("username/password is incorrect");
+              res.status(403).send("username/password is incorrect");
             }
           }
       } 
@@ -229,5 +229,5 @@ app.get('/ui/madi.png', function (req, res) {
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
-  console.log(`IMAD course app listening on port ${port}!`);
+//   console.log(`IMAD course app listening on port ${port}!`);
 });
