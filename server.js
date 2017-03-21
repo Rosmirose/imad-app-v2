@@ -14,7 +14,6 @@ var config = {
     password: process.env.DB_PASSWORD
 };
 
-
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 var articles = {
@@ -127,12 +126,12 @@ app.post('/login', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
  
-  pool.query('SELECT * from "user"  WHERE username=$1', [username], function(err, result) {
+  pool.query('SELECT * FROM "user"  WHERE username = $1', [username], function(err, result) {
      if(err) {
         res.status(500).send(err.toString());
       } else {
           if(result.rows.length === 0) {
-             res.send(403).sen("username/password is incorrect");
+             res.send(403).send("username/password is incorrect");
           } else {
             var dbString = result.rows[0].password;
             var salt = dbString.split('$')[2];
