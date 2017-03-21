@@ -1,6 +1,6 @@
-var button = document.getElementById('counter');
-// var counter = 0;
-button.onclick = function () {
+// var button = document.getElementById('counter');
+// // var counter = 0;
+// button.onclick = function () {
  //  create a request object to the counter end point
   var request = new XMLHttpRequest();
 
@@ -54,9 +54,9 @@ submit.onclick = function() {
   
   var nameInput = document.getElementById('username').value;
   var password =  document.getElementById('password').value;
-  console.log(username, password)
+  console.log(username, password);
   var name = nameInput.value;
   request.open('POST','http://rosmirose.imad.hasura-app.io/submit-name?name=' + name, true);
-  request.setRequestHeader('Content-Type', 'application/json')
+  request.setRequestHeader('Content-Type', 'application/json');
   request.send(JSON.stringify({username: username, password: password})); 
 };
